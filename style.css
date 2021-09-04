@@ -1,0 +1,186 @@
+/**********
+* QR code animation
+**********/
+
+
+/* Qr code  */
+
+#qr-code {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 100px);
+    border-radius: 50%;
+    background-color: darkblue;
+}
+
+img {
+    width: 60%;
+    position: relative;
+    top: 40px;
+    left: 40px;
+    opacity: 0.8;
+}
+
+/* spinner layer */
+
+#spinner-background {
+  display: none;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 100px);
+    border-radius: 50%;
+    background-color:darkblue;
+    opacity: 0.8;
+    transition: 200ms;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
+  
+}
+
+.path {
+    stroke:aliceblue;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+
+/* Check layer */
+
+#check {
+  display: none;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  left: calc(50% - 100px);
+  border-radius: 50%;
+  background-color:forestgreen;
+  opacity: 0.8;
+}
+
+
+#check > i {
+    text-align: justify;
+    position: relative;
+    top: 60px;
+    left: 60px;
+    color: wheat;
+    font-size: 5em;
+    animation: check .5s ease-in-out;
+}
+
+/* error layer */
+
+#error {
+  display: none;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  left: calc(50% - 100px);
+  border-radius: 50%;
+  background-color:firebrick;
+  opacity: 0.8;
+}
+
+
+#error > i {
+    text-align: justify;
+    position: relative;
+    top: 60px;
+    left:70px;
+    color: wheat;
+    font-size: 5em;
+    animation: check .5s ease-in-out;
+}
+/* text indications */
+
+#instructions {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 500;
+  animation: popUp 500ms;
+}
+
+
+/* subtitle state message */
+
+#qr-code[state]::after {
+  content: attr(state);
+  font-size: 1em;
+  color: #e54858;
+  display: block;
+  padding-top: 100px;
+  margin-bottom: 7px;
+  text-align: center;
+  transition: 300ms;
+  }
+
+ /* spinner keyframes */ 
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: -10;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+  
+ /* check keyframe */
+
+  @keyframes check {
+    0% {
+      transform: scale(0.5) rotate(180deg);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: scale(1.2) rotate(-30deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* instruction text */
+  
+  @keyframes popUp {
+    0% {
+      transform: translateY(-60px);
+      opacity: 0.4;
+    }
+    
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+  }
