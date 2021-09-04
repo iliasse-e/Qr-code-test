@@ -46,7 +46,11 @@ function validate() {
     if (isTrue) {
         identificationState[1].location.style.display = "block";
         instruction.innerHTML = identificationState[1].message;
-        qrCode.setAttribute("state", identificationState[1].after)
+        qrCode.setAttribute("state", identificationState[1].after);
+        setTimeout(() => {
+            window.location.reload();
+            validate()
+          }, 3000);
     }
     else {
         identificationState[2].location.style.display = "block";
